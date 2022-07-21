@@ -1,5 +1,3 @@
-import { CharacterCard } from '../../componets';
-
 const FavoritesPage = () => {
   return (
     <>

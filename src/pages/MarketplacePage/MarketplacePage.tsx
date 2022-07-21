@@ -5,7 +5,7 @@ import { CharacterCard } from '../../componets';
 
 const MarketplacePage = () => {
   const { ref: inViewRef, inView } = useInView();
-  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteCharacters();
+  const { data, hasNextPage, fetchNextPage } = useInfiniteCharacters();
 
   const totalCharactersCount = useMemo(() => (data ? data.pages[0].pageInfo.count : null), [data]);
   const characters = useMemo(() => {
