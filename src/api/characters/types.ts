@@ -1,3 +1,14 @@
+export declare namespace ServerCharacter {
+  interface ServerResponse {
+    id: string;
+    name: string;
+    image: string;
+    status: string;
+    species: string;
+    gender: string;
+  }
+}
+
 export declare namespace ServerCharacters {
   interface ServerResponse {
     pageInfo: {
@@ -5,18 +16,11 @@ export declare namespace ServerCharacters {
       next: number;
       prev: number;
     };
-    characters: Array<{
-      id: string;
-      name: string;
-      image: string;
-      status: string;
-      species: string;
-      gender: string;
-    }>;
+    characters: Array<ServerCharacter.ServerResponse>;
   }
 }
 
-export interface CharactersPage {
+export interface Characters {
   pageInfo: {
     count: number;
     next: number;
