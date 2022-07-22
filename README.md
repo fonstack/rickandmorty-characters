@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# Rick and Morty Marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Rick and Morty](https://sm.ign.com/t/ign_pt/news/r/rick-morty/rick-mortys-dan-harmon-working-on-comedy-set-in-ancient-gree_723r.h720.jpg)
 
-## Available Scripts
+Rick and Morty marketplace. You can see on a infinite loading list all the characters from the Rick and Morty series. You can save them as favorite and then you can take a look at your favorite characters. The app was developed using React, with Typescript of course ＼(°o°)／
 
-In the project directory, you can run:
+## Libraries stack
+* ***Jest*** and ***React Testing library*** for testing hooks, components and pages.
+* ***MSW*** for mocking the requests used on tests.
+* ***React query*** for managing all the requests and caching them.
+* ***Recoil*** for global state management.
+* ***Apollo*** for making the requests to the [Rick and Morty API.](https://rickandmortyapi.com/)
+* ***Styled Components*** for stiling all the components and pages.
 
-### `npm start`
+## App features
+* ***Infinite loading***: You can see all the characters from the Rick and Morty series without getting all at once.
+* ***Fav characters saved on global state***: The characters you saved as favorite will be saved on the global state of the app using recoil. If you refresgh the page, the state is deleted. You start with three characters saved as favorite. Other option was saving them on local storage, but it would turn useless using global state.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deployment
+The app is deployed using netlify (using CD). You can run the app locally with a simple `npm start` or check the app on the [Netlify website.](https://rickandmorty-marketplace.netlify.app/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
