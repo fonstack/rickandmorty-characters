@@ -1,14 +1,17 @@
-import { StyledApp } from './styles';
+import { RecoilRoot } from 'recoil';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouter, routes } from '../navigation';
+import { StyledApp } from './styles';
 
 function App() {
   return (
-    <BrowserRouter>
-      <StyledApp>
-        <AppRouter routes={routes} />
-      </StyledApp>
-    </BrowserRouter>
+    <RecoilRoot>
+      <BrowserRouter>
+        <StyledApp>
+          <AppRouter routes={routes} />
+        </StyledApp>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 

@@ -1,14 +1,18 @@
 import { StyledCharacterCard } from './styles';
 import { CharacterCardProps } from './types';
 
-const CharacterCard = ({ character }: CharacterCardProps) => {
+const CharacterCard = ({ character, onFavSelected }: CharacterCardProps) => {
+  const { id, name, image, gender, species, status, isFavorite } = character;
+
   return (
     <StyledCharacterCard>
-      <p>{character.id}</p>
-      <p>{character.name}</p>
-      <p>{character.gender}</p>
-      <p>{character.species}</p>
-      <p>{character.status}</p>
+      <p>{id}</p>
+      <p>{name}</p>
+      <p>{gender}</p>
+      <p>{species}</p>
+      <p>{status}</p>
+      {isFavorite && <p>FAVORITEEEEEEEEEEEEEEEEEEE</p>}
+      <button onClick={() => onFavSelected(id)}>{isFavorite ? 'Remove' : 'Add'}</button>
     </StyledCharacterCard>
   );
 };

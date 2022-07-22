@@ -2,19 +2,34 @@ import { useEffect, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Character, useInfiniteCharacters } from '../../api/characters';
 import { CharacterCard } from '../../componets';
+import { useFavUsersState } from '../../store';
 
 const MarketplacePage = () => {
   const { ref: inViewRef, inView } = useInView();
-  const { data, hasNextPage, fetchNextPage } = useInfiniteCharacters();
+  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteCharacters();
+  const [favCharactersIds, addFavCharacter, removeFavCharacter] = useFavUsersState();
 
-  const totalCharactersCount = useMemo(() => (data ? data.pages[0].pageInfo.count : null), [data]);
-  const characters = useMemo(() => {
-    return data ? data.pages.reduce<Character[]>((characters, page) => [...characters, ...page.characters], []) : [];
-  }, [data]);
-
+  /**
+   * Fetch next page when user scrolls to the bottom of the page
+   */
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, fetchNextPage, hasNextPage]);
+
+  const totalCharactersCount = useMemo(() => (data ? data.pages[0].pageInfo.count : null), [data]);
+
+  const characters = useMemo(() => {
+    const allCharacters = data
+      ? data.pages.reduce<Character[]>((characters, page) => [...characters, ...page.characters], [])
+      : [];
+    return allCharacters.map((character) => ({ ...character, isFavorite: favCharactersIds.includes(character.id) }));
+  }, [data, favCharactersIds]);
+
+  const getFetchingStatus = useMemo((): string | null => {
+    if (isFetching) return 'Loading more...';
+    if (hasNextPage) return 'Load More';
+    return null;
+  }, [isFetching, hasNextPage]);
 
   return (
     <div>
@@ -22,9 +37,14 @@ const MarketplacePage = () => {
       <p>Total count: {totalCharactersCount}</p>
 
       {characters.map((character) => (
-        <CharacterCard key={character.id} character={character} />
+        <CharacterCard
+          key={character.id}
+          character={character}
+          onFavSelected={character.isFavorite ? removeFavCharacter : addFavCharacter}
+        />
       ))}
-      <div ref={inViewRef}>Loading...</div>
+
+      {getFetchingStatus && <button ref={inViewRef}>{getFetchingStatus}</button>}
     </div>
   );
 };

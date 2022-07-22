@@ -36,6 +36,7 @@ export interface Character {
   species: string;
   status: 'alive' | 'dead' | 'unknown';
   gender: 'female' | 'male' | 'Genderless' | 'unknown';
+  isFavorite?: boolean; // Post computed property
 }
 
 export enum QueryTypes {
