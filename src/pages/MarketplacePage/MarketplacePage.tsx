@@ -33,16 +33,18 @@ const MarketplacePage = () => {
 
   return (
     <div>
-      <h1>Marketplace</h1>
-      <p>Total count: {totalCharactersCount}</p>
+      <h1 data-testid="page-title">Marketplace</h1>
+      <p data-testid="test">Total count: {totalCharactersCount}</p>
 
-      {characters.map((character) => (
-        <CharacterCard
-          key={character.id}
-          character={character}
-          onFavSelected={character.isFavorite ? removeFavCharacter : addFavCharacter}
-        />
-      ))}
+      <div data-testid="characters">
+        {characters.map((character) => (
+          <CharacterCard
+            key={character.id}
+            character={character}
+            onFavSelected={character.isFavorite ? removeFavCharacter : addFavCharacter}
+          />
+        ))}
+      </div>
 
       {getFetchingStatus && <button ref={inViewRef}>{getFetchingStatus}</button>}
     </div>

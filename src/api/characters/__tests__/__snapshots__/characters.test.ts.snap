@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Characters api tests Should get characters correctly 1`] = `
+Object {
+  "pageParams": Array [
+    undefined,
+  ],
+  "pages": Array [
+    Object {
+      "characters": Array [
+        Object {
+          "gender": "male",
+          "id": 1,
+          "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+          "name": "Rick Sanchez",
+          "species": "Human",
+          "status": "alive",
+        },
+        Object {
+          "gender": "male",
+          "id": 2,
+          "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+          "name": "Morty Smith",
+          "species": "Human",
+          "status": "alive",
+        },
+      ],
+      "pageInfo": Object {
+        "count": 2,
+        "next": 2,
+        "prev": undefined,
+      },
+    },
+  ],
+}
+`;

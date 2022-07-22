@@ -7,6 +7,7 @@ const CharacterCard = ({ character, onFavSelected }: CharacterCardProps) => {
   return (
     <StyledCharacterCard>
       <p>{id}</p>
+      <img src={image} alt="" />
       <p>{name}</p>
       <p>{gender}</p>
       <p>{species}</p>

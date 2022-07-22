@@ -11,7 +11,7 @@ const FavoritesPage = () => {
 
   return (
     <>
-      <h1>Favorites</h1>
+      <h1 data-testid="page-title">Favorites</h1>
 
       {favCharacters.map((character) => (
         <CharacterCard

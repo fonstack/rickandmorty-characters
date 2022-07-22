@@ -4,14 +4,28 @@ import { Character, Characters, ServerCharacters, ServerCharacter } from './type
 /**
  * Transforms a single server character to a app character
  */
-export const characterTransform = (character: ServerCharacter.ServerResponse): Character => {
+export const characterTransform = (data: ServerCharacter.ServerResponse): Character => {
   return {
-    id: Number(character.id),
-    name: character.name,
-    image: character.image,
-    species: character.species,
-    status: character.status.toLowerCase() as Character['status'],
-    gender: character.gender.toLowerCase() as Character['gender'],
+    id: Number(data.id),
+    name: data.name,
+    image: data.image,
+    species: data.species,
+    status: data.status.toLowerCase() as Character['status'],
+    gender: data.gender.toLowerCase() as Character['gender'],
+  };
+};
+
+/**
+ * Transforms an array of server character to an array of app characters
+ */
+export const charactersTransform = (data: ServerCharacters.ServerResponse): Characters => {
+  return {
+    characters: data.characters.map(characterTransform),
+    pageInfo: {
+      count: data.pageInfo.count,
+      next: data.pageInfo.next,
+      prev: data.pageInfo.prev,
+    },
   };
 };
 
@@ -19,14 +33,7 @@ export const characterTransform = (character: ServerCharacter.ServerResponse): C
  * Transforms an array (pages) of Characters to app pages of Characters
  */
 export const charactersPagesTransform = (data: InfiniteData<ServerCharacters.ServerResponse>): InfiniteData<Characters> => {
-  const pages: Characters[] = data.pages.map((page) => ({
-    characters: page.characters.map(characterTransform),
-    pageInfo: {
-      count: page.pageInfo.count,
-      next: page.pageInfo.next,
-      prev: page.pageInfo.prev,
-    },
-  }));
+  const pages: Characters[] = data.pages.map(charactersTransform);
 
   return {
     pages,

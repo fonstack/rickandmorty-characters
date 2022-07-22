@@ -1,12 +1,17 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Paths } from '../navigation';
 import App from './App';
 
 const queryClient = new QueryClient();
 
-function Root() {
+interface RootProps {
+  initialPath?: Paths;
+}
+
+function Root({ initialPath }: RootProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <App />
+      <App initialPath={initialPath} />
     </QueryClientProvider>
   );
 }

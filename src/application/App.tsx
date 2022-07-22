@@ -1,16 +1,28 @@
 import { RecoilRoot } from 'recoil';
-import { BrowserRouter } from 'react-router-dom';
-import { AppRouter, routes } from '../navigation';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { AppRouter, Paths, routes } from '../navigation';
 import { StyledApp } from './styles';
 
-function App() {
+interface AppProps {
+  initialPath?: Paths;
+}
+
+const Router = ({ children, initialPath }: AppProps & { children: JSX.Element }) => {
+  if (initialPath) {
+    return <MemoryRouter initialEntries={[initialPath]}>{children}</MemoryRouter>;
+  }
+
+  return <BrowserRouter>{children}</BrowserRouter>;
+};
+
+function App({ initialPath }: AppProps) {
   return (
     <RecoilRoot>
-      <BrowserRouter>
+      <Router initialPath={initialPath}>
         <StyledApp>
           <AppRouter routes={routes} />
         </StyledApp>
-      </BrowserRouter>
+      </Router>
     </RecoilRoot>
   );
 }
