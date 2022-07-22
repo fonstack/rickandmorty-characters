@@ -1,4 +1,5 @@
 enum Paths {
+  HOME = '/',
   MARKETPLACE = '/marketplace',
   FAVORITES = '/favorites',
 }
