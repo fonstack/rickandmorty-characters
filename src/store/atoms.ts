@@ -3,5 +3,5 @@ import { FAV_CHARACTERS } from './constants';
 
 export const favCharactersState = atom<number[]>({
   key: FAV_CHARACTERS,
-  default: [1, 3],
+  default: [1, 5, 45],
 });

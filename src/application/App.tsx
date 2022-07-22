@@ -1,13 +1,14 @@
-import { RecoilRoot } from 'recoil';
+import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { AppRouter, Paths, routes } from '../navigation';
 import { StyledApp } from './styles';
 
-interface AppProps {
+export interface AppProps {
   initialPath?: Paths;
+  recoilInit?: (mutableSnapshot: MutableSnapshot) => void;
 }
 
-const Router = ({ children, initialPath }: AppProps & { children: JSX.Element }) => {
+const CustomRouter = ({ children, initialPath }: AppProps & { children: JSX.Element }) => {
   if (initialPath) {
     return <MemoryRouter initialEntries={[initialPath]}>{children}</MemoryRouter>;
   }
@@ -15,14 +16,14 @@ const Router = ({ children, initialPath }: AppProps & { children: JSX.Element })
   return <BrowserRouter>{children}</BrowserRouter>;
 };
 
-function App({ initialPath }: AppProps) {
+function App({ initialPath, recoilInit }: AppProps) {
   return (
-    <RecoilRoot>
-      <Router initialPath={initialPath}>
+    <RecoilRoot initializeState={recoilInit}>
+      <CustomRouter initialPath={initialPath}>
         <StyledApp>
           <AppRouter routes={routes} />
         </StyledApp>
-      </Router>
+      </CustomRouter>
     </RecoilRoot>
   );
 }
