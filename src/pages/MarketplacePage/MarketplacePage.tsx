@@ -6,7 +6,7 @@ import { useFavUsersState } from '../../store';
 
 const MarketplacePage = () => {
   const { ref: inViewRef, inView } = useInView();
-  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteCharacters();
+  const { data, hasNextPage, fetchNextPage, isFetching, isLoading } = useInfiniteCharacters();
   const [favCharactersIds, addFavCharacter, removeFavCharacter] = useFavUsersState();
 
   /**
@@ -34,17 +34,21 @@ const MarketplacePage = () => {
   return (
     <div>
       <h1 data-testid="page-title">Marketplace</h1>
-      <p data-testid="test">Total count: {totalCharactersCount}</p>
+      <p>Total account: {totalCharactersCount && <span data-testid="characters-count">{totalCharactersCount}</span>}</p>
 
-      <div data-testid="characters">
-        {characters.map((character) => (
-          <CharacterCard
-            key={character.id}
-            character={character}
-            onFavSelected={character.isFavorite ? removeFavCharacter : addFavCharacter}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <p>Loasing...</p>
+      ) : (
+        <div data-testid="characters">
+          {characters.map((character) => (
+            <CharacterCard
+              key={character.id}
+              character={character}
+              onFavSelected={character.isFavorite ? removeFavCharacter : addFavCharacter}
+            />
+          ))}
+        </div>
+      )}
 
       {getFetchingStatus && <button ref={inViewRef}>{getFetchingStatus}</button>}
     </div>

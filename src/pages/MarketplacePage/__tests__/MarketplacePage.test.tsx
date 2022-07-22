@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import { createFakeCharactersResponse } from '../../../api/characters/mockData';
 import { Paths } from '../../../navigation';
 import { renderApp } from '../../../tests';
 
@@ -11,10 +12,14 @@ describe('Marketplace page tests', () => {
   });
 
   it('Should render characters', async () => {
-    // renderApp(Paths.MARKETPLACE);
+    const charactersResponse = createFakeCharactersResponse();
 
-    // const charactersContainer = screen.getByTestId('test').textContent;
-    // console.log(charactersContainer);
-    expect(true).toBe(true);
-  }, 5000);
+    renderApp(Paths.MARKETPLACE);
+
+    const totalCharactersCount = charactersResponse.pageInfo.count.toString();
+    const renderedCharactersCount = charactersResponse.characters.length;
+
+    expect((await screen.findByTestId('characters-count')).textContent).toBe(totalCharactersCount);
+    expect((await screen.findByTestId('characters')).childNodes.length).toBe(renderedCharactersCount);
+  });
 });
