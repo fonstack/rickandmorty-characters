@@ -6,6 +6,7 @@ export declare namespace ServerCharacter {
     status: string;
     species: string;
     gender: string;
+    __typename: 'Character';
   }
 }
 
@@ -13,18 +14,20 @@ export declare namespace ServerCharacters {
   interface ServerResponse {
     pageInfo: {
       count: number;
-      next: number;
-      prev: number;
+      next?: number;
+      prev?: number;
+      __typename: 'Info';
     };
     characters: Array<ServerCharacter.ServerResponse>;
+    __typename: 'Characters';
   }
 }
 
 export interface Characters {
   pageInfo: {
     count: number;
-    next: number;
-    prev: number;
+    next?: number;
+    prev?: number;
   };
   characters: Character[];
 }
