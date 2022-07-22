@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-export const getCharactersByPage = gql`
+export const getCharactersByPageQuery = gql`
   query getCharactersByPage($pageNumber: Int!) {
     response: characters(page: $pageNumber) {
       pageInfo: info {
@@ -16,6 +16,19 @@ export const getCharactersByPage = gql`
         species
         gender
       }
+    }
+  }
+`;
+
+export const getCharactersByIdsQuery = gql`
+  query getCharactersByIds($ids: [ID!]!) {
+    response: charactersByIds(ids: $ids) {
+      id
+      name
+      image
+      status
+      species
+      gender
     }
   }
 `;

@@ -41,4 +41,5 @@ export interface Character {
 
 export enum QueryTypes {
   CHARACTERS = 'characters',
+  CHARACTERS_BY_IDS = 'charactersByIds',
 }

@@ -4,7 +4,7 @@ import { Character, Characters, ServerCharacters, ServerCharacter } from './type
 /**
  * Transforms a single server character to a app character
  */
-const characterTransform = (character: ServerCharacter.ServerResponse): Character => {
+export const characterTransform = (character: ServerCharacter.ServerResponse): Character => {
   return {
     id: Number(character.id),
     name: character.name,
