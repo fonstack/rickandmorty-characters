@@ -40,6 +40,27 @@ export const createFakeCharactersResponse = (): ServerCharacters.ServerResponse 
   __typename: 'Characters',
 });
 
+export const createFakeFavCharacterResponse = (): ServerCharacter.ServerResponse[] => [
+  {
+    id: '1',
+    name: 'Rick Sanchez',
+    image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+    status: 'Alive',
+    species: 'Human',
+    gender: 'Male',
+    __typename: 'Character',
+  },
+  {
+    id: '5',
+    name: 'Jerry Smith',
+    image: 'https://rickandmortyapi.com/api/character/avatar/5.jpeg',
+    status: 'Alive',
+    species: 'Human',
+    gender: 'Male',
+    __typename: 'Character',
+  },
+];
+
 export const createFakeCharacter = (): Character => ({
   id: 1,
   name: 'Rick Sanchez',
