@@ -28,7 +28,7 @@ Object {
       "pageInfo": Object {
         "count": 2,
         "next": 2,
-        "prev": undefined,
+        "prev": null,
       },
     },
   ],

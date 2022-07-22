@@ -32,8 +32,6 @@ describe('Characters api tests', () => {
     await waitFor(() => !result.current.isFetching);
     rerender();
 
-    console.log(result.current.data?.pages[0].characters);
-
     expect(result.current.data).toMatchSnapshot();
   });
 });

@@ -34,7 +34,7 @@ export const createFakeCharactersResponse = (): ServerCharacters.ServerResponse 
   pageInfo: {
     count: 2,
     next: 2,
-    prev: undefined,
+    prev: null,
     __typename: 'Info',
   },
   __typename: 'Characters',
@@ -71,6 +71,6 @@ export const createFakeCharacters = (): Characters => ({
   pageInfo: {
     count: 2,
     next: 2,
-    prev: undefined,
+    prev: null,
   },
 });

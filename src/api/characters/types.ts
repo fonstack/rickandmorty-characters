@@ -14,8 +14,8 @@ export declare namespace ServerCharacters {
   interface ServerResponse {
     pageInfo: {
       count: number;
-      next?: number;
-      prev?: number;
+      next: number | null;
+      prev: number | null;
       __typename: 'Info';
     };
     characters: Array<ServerCharacter.ServerResponse>;
@@ -26,8 +26,8 @@ export declare namespace ServerCharacters {
 export interface Characters {
   pageInfo: {
     count: number;
-    next?: number;
-    prev?: number;
+    next: number | null;
+    prev: number | null;
   };
   characters: Character[];
 }
