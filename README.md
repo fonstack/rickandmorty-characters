@@ -8,8 +8,8 @@ Rick and Morty marketplace. You can take a look at all the characters from the R
 * ***Jest*** and ***React Testing library*** for testing hooks, components and pages.
 * ***MSW*** for mocking the requests used on tests.
 * ***React query*** for managing all the requests and caching them.
+* ***Graphql Request*** for making the requests to the [Rick and Morty API.](https://rickandmortyapi.com/)
 * ***Recoil*** for global state management.
-* ***Apollo*** for making the requests to the [Rick and Morty API.](https://rickandmortyapi.com/)
 * ***Styled Components*** for styling all the components and pages.
 
 ## App features
