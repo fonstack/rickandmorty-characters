@@ -7,7 +7,6 @@ export const createFakeCharacterResponse = (): ServerCharacter.ServerResponse =>
   status: 'Alive',
   species: 'Human',
   gender: 'Male',
-  __typename: 'Character',
 });
 
 export const createFakeCharactersResponse = (): ServerCharacters.ServerResponse => ({
@@ -19,7 +18,6 @@ export const createFakeCharactersResponse = (): ServerCharacters.ServerResponse 
       status: 'Alive',
       species: 'Human',
       gender: 'Male',
-      __typename: 'Character',
     },
     {
       id: '2',
@@ -28,16 +26,13 @@ export const createFakeCharactersResponse = (): ServerCharacters.ServerResponse 
       status: 'Alive',
       species: 'Human',
       gender: 'Male',
-      __typename: 'Character',
     },
   ],
   pageInfo: {
     count: 2,
     next: 2,
     prev: null,
-    __typename: 'Info',
   },
-  __typename: 'Characters',
 });
 
 export const createFakeFavCharacterResponse = (): ServerCharacter.ServerResponse[] => [
@@ -48,7 +43,6 @@ export const createFakeFavCharacterResponse = (): ServerCharacter.ServerResponse
     status: 'Alive',
     species: 'Human',
     gender: 'Male',
-    __typename: 'Character',
   },
   {
     id: '5',
@@ -57,7 +51,6 @@ export const createFakeFavCharacterResponse = (): ServerCharacter.ServerResponse
     status: 'Alive',
     species: 'Human',
     gender: 'Male',
-    __typename: 'Character',
   },
 ];
 

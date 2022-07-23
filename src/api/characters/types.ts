@@ -6,7 +6,6 @@ export declare namespace ServerCharacter {
     status: string;
     species: string;
     gender: string;
-    __typename: 'Character';
   }
 }
 
@@ -16,10 +15,8 @@ export declare namespace ServerCharacters {
       count: number;
       next: number | null;
       prev: number | null;
-      __typename: 'Info';
     };
     characters: Array<ServerCharacter.ServerResponse>;
-    __typename: 'Characters';
   }
 }
 
