@@ -10,7 +10,7 @@ const FavoritesPage = () => {
   const favCharacters = useMemo(() => (data ? data.map((character) => ({ ...character, isFavorite: true })) : []), [data]);
 
   return (
-    <>
+    <section className="max-width-wrapper">
       <h1 data-testid="page-title">Favorites</h1>
 
       {isLoading ? (
@@ -26,7 +26,7 @@ const FavoritesPage = () => {
           ))}
         </div>
       )}
-    </>
+    </section>
   );
 };
 

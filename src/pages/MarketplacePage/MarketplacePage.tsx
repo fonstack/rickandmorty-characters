@@ -32,7 +32,7 @@ const MarketplacePage = () => {
   }, [isFetching, hasNextPage]);
 
   return (
-    <div>
+    <section className="max-width-wrapper">
       <h1 data-testid="page-title">Marketplace</h1>
       <p>Total account: {totalCharactersCount && <span data-testid="characters-count">{totalCharactersCount}</span>}</p>
 
@@ -51,7 +51,7 @@ const MarketplacePage = () => {
       )}
 
       {getFetchingStatus && <button ref={inViewRef}>{getFetchingStatus}</button>}
-    </div>
+    </section>
   );
 };
 

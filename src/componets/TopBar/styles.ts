@@ -2,8 +2,15 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { getFontSize, getSpacing } from '../../styles';
 
+export const StyledHeader = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+`;
+
 export const Wrapper = styled.div`
-  padding: ${getSpacing(4)} 0;
+  background-color: var(--color-dark-gray);
+  padding: ${getSpacing(3)} 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

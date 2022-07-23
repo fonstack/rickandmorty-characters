@@ -1,7 +1,6 @@
 import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { AppRouter, Paths, routes } from '../navigation';
-import { StyledApp } from './styles';
 
 export interface AppProps {
   initialPath?: Paths;
@@ -20,9 +19,7 @@ function App({ initialPath, recoilInit }: AppProps) {
   return (
     <RecoilRoot initializeState={recoilInit}>
       <CustomRouter initialPath={initialPath}>
-        <StyledApp>
-          <AppRouter routes={routes} />
-        </StyledApp>
+        <AppRouter routes={routes} />
       </CustomRouter>
     </RecoilRoot>
   );
