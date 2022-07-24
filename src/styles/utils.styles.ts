@@ -5,7 +5,7 @@ const fontSizes: Record<FontSizeToken, string> = {
   h2: '1.375rem',
   large: '1.1875rem',
   medium: '1rem',
-  small: '0.875rem',
+  small: '0.75rem',
 };
 
 const SPACING_UNNIT = 8;

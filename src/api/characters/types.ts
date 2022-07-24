@@ -35,7 +35,7 @@ export interface Character {
   image: string;
   species: string;
   status: 'alive' | 'dead' | 'unknown';
-  gender: 'female' | 'male' | 'Genderless' | 'unknown';
+  gender: 'female' | 'male' | 'genderless' | 'unknown';
   isFavorite?: boolean; // Post computed property
 }
 

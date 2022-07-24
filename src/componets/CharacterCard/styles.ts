@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getSpacing } from '../../styles';
+import { getFontSize, getSpacing } from '../../styles';
 
 export const StyledCharacterCard = styled.div`
   overflow: hidden;
@@ -19,13 +19,13 @@ export const ImageContainer = styled.div`
 `;
 
 export const FavoriteFlag = styled.div`
+  position: absolute;
+  top: ${getSpacing(2)};
+  right: ${getSpacing(2)};
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--color-medium-gray-opacity);
-  position: absolute;
-  top: ${getSpacing(2)};
-  right: ${getSpacing(2)};
   width: ${getSpacing(6)};
   height: ${getSpacing(6)};
   border-radius: 50px;
@@ -33,20 +33,20 @@ export const FavoriteFlag = styled.div`
 
   &:hover {
     svg {
-      stroke: var(--color-primary-lighter);
+      stroke: var(--color-secondary-lighter);
     }
   }
 
   svg {
     fill: transparent;
     stroke: var(--color-light-gray);
-    stroke-width: 2px;
+    stroke-width: 40px;
     transition: 0.2s;
 
     &.active {
       animation: like 0.4s 1;
-      fill: var(--color-primary-lighter);
-      stroke: var(--color-primary-lighter);
+      fill: var(--color-secondary-lighter);
+      stroke: var(--color-secondary-lighter);
     }
   }
 
@@ -63,6 +63,55 @@ export const FavoriteFlag = styled.div`
   }
 `;
 
+export const IconTag = styled.div`
+  background: var(--gradient-primary-secondary);
+  font-size: ${getFontSize('large')};
+  transform: translateY(50%);
+  position: absolute;
+  left: ${getSpacing(1.5)};
+  bottom: 0;
+  border-radius: 4px;
+  padding: ${getSpacing(1)} ${getSpacing(1.5)};
+
+  svg {
+    width: ${getSpacing(3.5)};
+    height: ${getSpacing(3.5)};
+    fill: var(--color-text);
+  }
+`;
+
 export const InfoContainer = styled.div`
-  padding: ${getSpacing(4)};
+  padding: ${getSpacing(5)} ${getSpacing(3)} ${getSpacing(2.5)} ${getSpacing(3)};
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: ${getSpacing(2.5)};
+  }
+`;
+
+export const StyledInfo = styled.div`
+  p.title {
+    font-size: ${getFontSize('small')};
+    color: var(--color-light-gray);
+    text-transform: uppercase;
+  }
+
+  p.content {
+    font-size: ${getFontSize('large')};
+    line-height: 1.2;
+
+    &.status-alive,
+    &.status-dead {
+      font-weight: 700;
+    }
+
+    &.status-alive {
+      color: green;
+    }
+
+    &.status-dead {
+      color: red;
+    }
+  }
 `;
