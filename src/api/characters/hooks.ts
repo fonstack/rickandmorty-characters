@@ -3,9 +3,16 @@ import { getCharactersByIds, getCharactersPaginated } from './api';
 import { charactersPagesTransform, characterTransform } from './selectors';
 import { Character, Characters, QueryTypes } from './types';
 
+const MAX_PAGES_TO_FETCH = 10;
+
 export const useInfiniteCharacters = (): UseInfiniteQueryResult<Characters> => {
   return useInfiniteQuery(QueryTypes.CHARACTERS, ({ pageParam = 1 }) => getCharactersPaginated(pageParam), {
-    getNextPageParam: (lastPage) => lastPage.pageInfo.next,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.pageInfo.next && lastPage.pageInfo.next < MAX_PAGES_TO_FETCH) {
+        return lastPage.pageInfo.next;
+      }
+      return null;
+    },
     select: charactersPagesTransform,
   });
 };
