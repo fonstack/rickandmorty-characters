@@ -1,12 +1,12 @@
 import { StyledButton } from './styles';
+import { ButtonProps } from './types';
 
-type ButtonProps = {
-  children: JSX.Element | string;
-  onClick?: () => void;
-};
-
-const Button = ({ children, onClick }: ButtonProps) => {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+const Button = ({ children, onClick, testId }: ButtonProps) => {
+  return (
+    <StyledButton data-testid={testId} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export { Button };
