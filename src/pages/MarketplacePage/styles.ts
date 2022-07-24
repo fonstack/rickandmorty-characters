@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../../componets/Button/Button';
 import { getFontSize, getSpacing } from '../../styles';
 
 export const StyledTitle = styled.div`
@@ -16,4 +17,10 @@ export const StyledTitle = styled.div`
       color: var(--color-light-gray);
     }
   }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: ${getSpacing(6)} 0;
 `;

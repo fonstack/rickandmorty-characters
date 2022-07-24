@@ -1,9 +1,10 @@
 import { useEffect, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Character, useInfiniteCharacters } from '../../api/characters';
+import { Button } from '../../componets/Button/Button';
 import { CharactersGrid } from '../../componets/CharactersGrid/CharactersGrid';
 import { useFavUsersState } from '../../store';
-import { StyledTitle } from './styles';
+import { ButtonWrapper, StyledTitle } from './styles';
 
 const MarketplacePage = () => {
   const { ref: inViewRef, inView } = useInView();
@@ -27,9 +28,9 @@ const MarketplacePage = () => {
   }, [data, favCharactersIds]);
 
   const getFetchingStatus = useMemo((): string | null => {
-    if (isFetching) return 'Loading more...';
+    if (isFetching) return 'Loading more characters...';
     if (hasNextPage) return 'Load More';
-    return null;
+    return '⊙﹏⊙ all characters loaded ⊙﹏⊙';
   }, [isFetching, hasNextPage]);
 
   return (
@@ -53,7 +54,11 @@ const MarketplacePage = () => {
         />
       )}
 
-      {getFetchingStatus && <button ref={inViewRef}>{getFetchingStatus}</button>}
+      {getFetchingStatus && (
+        <ButtonWrapper>
+          <Button ref={inViewRef}>{getFetchingStatus}</Button>
+        </ButtonWrapper>
+      )}
     </section>
   );
 };

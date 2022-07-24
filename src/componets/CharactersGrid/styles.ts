@@ -6,7 +6,7 @@ export const StyledCharactersGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
   grid-gap: ${getSpacing(3)};
   justify-content: center;
-  margin-top: ${getSpacing(4)};
+  margin-top: ${getSpacing(6)};
 
   @media (max-width: 895px) {
     grid-template-columns: repeat(auto-fit, minmax(200px, 220px));
