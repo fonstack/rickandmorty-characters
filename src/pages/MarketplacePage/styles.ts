@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { Button } from '../../componets/Button/Button';
 import { getFontSize, getSpacing } from '../../styles';
 
 export const StyledTitle = styled.div`
