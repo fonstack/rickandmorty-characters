@@ -5,16 +5,20 @@ import { Character, Characters, QueryTypes } from './types';
 
 const MAX_PAGES_TO_FETCH = 10;
 
-export const useInfiniteCharacters = (): UseInfiniteQueryResult<Characters> => {
-  return useInfiniteQuery(QueryTypes.CHARACTERS, ({ pageParam = 1 }) => getCharactersPaginated(pageParam), {
-    getNextPageParam: (lastPage) => {
-      if (lastPage.pageInfo.next && lastPage.pageInfo.next < MAX_PAGES_TO_FETCH) {
-        return lastPage.pageInfo.next;
-      }
-      return null;
-    },
-    select: charactersPagesTransform,
-  });
+export const useInfiniteCharacters = (statusFilter: string): UseInfiniteQueryResult<Characters> => {
+  return useInfiniteQuery(
+    [QueryTypes.CHARACTERS, statusFilter],
+    ({ pageParam = 1 }) => getCharactersPaginated(pageParam, statusFilter),
+    {
+      getNextPageParam: (lastPage) => {
+        if (lastPage.pageInfo.next && lastPage.pageInfo.next < MAX_PAGES_TO_FETCH) {
+          return lastPage.pageInfo.next;
+        }
+        return null;
+      },
+      select: charactersPagesTransform,
+    }
+  );
 };
 
 export const useCharactersByIds = (ids: number[]): UseQueryResult<Character[]> => {

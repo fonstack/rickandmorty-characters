@@ -2,9 +2,12 @@ import { getCharactersByPageQuery, getCharactersByIdsQuery } from './queries';
 import { ServerCharacters, ServerCharacter } from './types';
 import graphQlClient from '../client';
 
-export const getCharactersPaginated = async (pageNumber: number): Promise<ServerCharacters.ServerResponse> => {
+export const getCharactersPaginated = async (
+  pageNumber: number,
+  statusFilter: string
+): Promise<ServerCharacters.ServerResponse> => {
   try {
-    const data = await graphQlClient.request(getCharactersByPageQuery, { pageNumber });
+    const data = await graphQlClient.request(getCharactersByPageQuery, { pageNumber, statusFilter });
     return data.response as ServerCharacters.ServerResponse;
   } catch (error) {
     throw new Error(`Unknown error: ${error}`);

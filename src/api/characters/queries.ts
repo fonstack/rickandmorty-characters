@@ -1,8 +1,8 @@
 import { gql } from 'graphql-request';
 
 export const getCharactersByPageQuery = gql`
-  query getCharactersByPage($pageNumber: Int!) {
-    response: characters(page: $pageNumber) {
+  query getCharactersByPage($pageNumber: Int!, $statusFilter: String!) {
+    response: characters(page: $pageNumber, filter: { status: $statusFilter }) {
       pageInfo: info {
         count
         next

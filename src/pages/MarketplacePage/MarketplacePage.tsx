@@ -1,14 +1,15 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Character, useInfiniteCharacters } from '../../api/characters';
 import { Button } from '../../componets/Button/Button';
 import { CharactersGrid } from '../../componets/CharactersGrid/CharactersGrid';
 import { useFavUsersState } from '../../store';
-import { ButtonWrapper, StyledTitle } from './styles';
+import { ButtonWrapper, StyledFilterOption, StyledFiltersWrapper, StyledTitle } from './styles';
 
 const MarketplacePage = () => {
   const { ref: inViewRef, inView } = useInView();
-  const { data, hasNextPage, fetchNextPage, isFetching, isLoading } = useInfiniteCharacters();
+  const [characterStatusFilter, setCharacterStatusFilter] = useState<Character['status']>('alive');
+  const { data, hasNextPage, fetchNextPage, isFetching, isLoading } = useInfiniteCharacters(characterStatusFilter);
   const [favCharactersIds, addFavCharacter, removeFavCharacter] = useFavUsersState();
 
   /**
@@ -42,6 +43,18 @@ const MarketplacePage = () => {
           <span className="mute">characters found</span>
         </p>
       </StyledTitle>
+
+      <StyledFiltersWrapper>
+        <StyledFilterOption onClick={() => setCharacterStatusFilter('alive')} active={characterStatusFilter === 'alive'}>
+          Alive
+        </StyledFilterOption>
+        <StyledFilterOption onClick={() => setCharacterStatusFilter('dead')} active={characterStatusFilter === 'dead'}>
+          Dead
+        </StyledFilterOption>
+        <StyledFilterOption onClick={() => setCharacterStatusFilter('unknown')} active={characterStatusFilter === 'unknown'}>
+          Unknown
+        </StyledFilterOption>
+      </StyledFiltersWrapper>
 
       {isLoading ? (
         <p>Loading...</p>

@@ -37,6 +37,11 @@ export const GlobalStyle = createGlobalStyle`
             padding-left: ${getSpacing(8)};
             padding-right: ${getSpacing(8)};
         }
+        
+        @media (max-width: 650px) {
+            padding-left: ${getSpacing(4)};
+            padding-right: ${getSpacing(4)};
+        }
     }
 
     ::-webkit-scrollbar {
