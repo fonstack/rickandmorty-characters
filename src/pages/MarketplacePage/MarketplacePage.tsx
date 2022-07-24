@@ -1,8 +1,9 @@
 import { useEffect, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Character, useInfiniteCharacters } from '../../api/characters';
-import { CharacterCard } from '../../componets';
+import { CharactersGrid } from '../../componets/CharactersGrid/CharactersGrid';
 import { useFavUsersState } from '../../store';
+import { StyledTitle } from './styles';
 
 const MarketplacePage = () => {
   const { ref: inViewRef, inView } = useInView();
@@ -32,22 +33,24 @@ const MarketplacePage = () => {
   }, [isFetching, hasNextPage]);
 
   return (
-    <section className="max-width-wrapper">
-      <h1 data-testid="page-title">Marketplace</h1>
-      <p>Total account: {totalCharactersCount && <span data-testid="characters-count">{totalCharactersCount}</span>}</p>
+    <section className="max-width-wrapper-inner">
+      <StyledTitle>
+        <h1 data-testid="page-title">Explore</h1>
+        <p>
+          {totalCharactersCount && <strong data-testid="characters-count">{totalCharactersCount}</strong>}{' '}
+          <span className="mute">characters found</span>
+        </p>
+      </StyledTitle>
 
       {isLoading ? (
-        <p>Loasing...</p>
+        <p>Loading...</p>
       ) : (
-        <div data-testid="characters">
-          {characters.map((character) => (
-            <CharacterCard
-              key={character.id}
-              character={character}
-              onFavSelected={character.isFavorite ? removeFavCharacter : addFavCharacter}
-            />
-          ))}
-        </div>
+        <CharactersGrid
+          testId="characters"
+          characters={characters}
+          onAddFavCharacter={addFavCharacter}
+          onRemoveFavCharacter={removeFavCharacter}
+        />
       )}
 
       {getFetchingStatus && <button ref={inViewRef}>{getFetchingStatus}</button>}

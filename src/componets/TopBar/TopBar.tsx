@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Paths } from '../../navigation';
 import { StyledHeader, StyledLink, StyledNav, Wrapper } from './styles';
-import { ReactComponent as Logo } from '../../assets/images/logo-api.svg';
 import { Button } from '../Button/Button';
+import { Paths } from '../../navigation';
+import { ReactComponent as Logo } from '../../assets/images/logo-api.svg';
 
 const portfolioLink = 'https://fonstack.dev';
 
 const TopBar = () => {
   return (
-    <StyledHeader className="max-width-wrapper">
+    <StyledHeader className="max-width-wrapper" data-testid="topbar">
       <Wrapper>
         <Link to={Paths.MARKETPLACE}>
           <Logo />

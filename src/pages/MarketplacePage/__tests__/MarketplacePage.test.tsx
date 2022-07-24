@@ -8,7 +8,7 @@ describe('Marketplace page tests', () => {
     renderApp(Paths.MARKETPLACE);
 
     const pageTitle = screen.getByTestId('page-title').textContent;
-    expect(pageTitle).toBe('Marketplace');
+    expect(pageTitle).toBe('Explore');
   });
 
   it('Should render characters', async () => {

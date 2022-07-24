@@ -13,5 +13,6 @@ export const useInfiniteCharacters = (): UseInfiniteQueryResult<Characters> => {
 export const useCharactersByIds = (ids: number[]): UseQueryResult<Character[]> => {
   return useQuery([QueryTypes.CHARACTERS_BY_IDS, ids.join(',')], () => getCharactersByIds(ids), {
     select: (data) => data.map(characterTransform),
+    keepPreviousData: true,
   });
 };

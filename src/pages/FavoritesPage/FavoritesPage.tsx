@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { useCharactersByIds } from '../../api/characters';
-import { CharacterCard } from '../../componets';
+import { CharactersGrid } from '../../componets/CharactersGrid/CharactersGrid';
 import { useFavUsersState } from '../../store';
+import { StyledTitle } from './styles';
 
 const FavoritesPage = () => {
   const [favCharactersIds, addFavCharacter, removeFavCharacter] = useFavUsersState();
@@ -10,21 +11,24 @@ const FavoritesPage = () => {
   const favCharacters = useMemo(() => (data ? data.map((character) => ({ ...character, isFavorite: true })) : []), [data]);
 
   return (
-    <section className="max-width-wrapper">
-      <h1 data-testid="page-title">Favorites</h1>
+    <section className="max-width-wrapper-inner">
+      <StyledTitle>
+        <h1 data-testid="page-title">Favorites</h1>
+        <p>
+          <strong data-testid="characters-count">{favCharactersIds.length}</strong>{' '}
+          <span className="mute">favorite characters</span>
+        </p>
+      </StyledTitle>
 
       {isLoading ? (
         <p>Loading</p>
       ) : (
-        <div data-testid="fav-characters">
-          {favCharacters.map((character) => (
-            <CharacterCard
-              key={character.id}
-              character={character}
-              onFavSelected={character.isFavorite ? removeFavCharacter : addFavCharacter}
-            />
-          ))}
-        </div>
+        <CharactersGrid
+          testId="fav-characters"
+          characters={favCharacters}
+          onAddFavCharacter={addFavCharacter}
+          onRemoveFavCharacter={removeFavCharacter}
+        />
       )}
     </section>
   );

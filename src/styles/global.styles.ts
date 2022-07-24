@@ -15,13 +15,28 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .max-width-wrapper {
-        position: relative;
         width: 100%;
-        max-width: 1400px;
+        max-width: 1600px;
         margin-left: auto;
         margin-right: auto;
         padding-left: ${getSpacing(4)};
         padding-right: ${getSpacing(4)};
+    }
+
+    .max-width-wrapper-inner {
+        width: 100%;
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: ${getSpacing(4)};
+        padding-left: ${getSpacing(16)};
+        padding-right: ${getSpacing(16)};
+        
+        @media (max-width: 780px) {
+            padding-top: ${getSpacing(1)};
+            padding-left: ${getSpacing(8)};
+            padding-right: ${getSpacing(8)};
+        }
     }
 
     ::-webkit-scrollbar {

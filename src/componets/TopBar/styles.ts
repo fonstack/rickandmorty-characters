@@ -10,10 +10,11 @@ export const StyledHeader = styled.header`
 
 export const Wrapper = styled.div`
   background-color: var(--color-dark-gray);
-  padding: ${getSpacing(3)} 0;
+  padding: ${getSpacing(3)} ${getSpacing(2)};
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid var(--color-light-gray);
 `;
 
 export const StyledNav = styled.nav`
