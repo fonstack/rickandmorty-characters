@@ -48,6 +48,10 @@ export const StyledFilterOption = styled.div<{ active: boolean }>`
     opacity: 0.7;
   }
 
+  @media (max-width: 900px) {
+    padding: ${getSpacing(1.5)} ${getSpacing(2)};
+  }
+
   ${({ active }) =>
     active &&
     css`
