@@ -20,16 +20,12 @@ const FavoritesPage = () => {
         </p>
       </StyledTitle>
 
-      {isLoading ? (
-        <p>Loading</p>
-      ) : (
-        <CharactersGrid
-          testId="fav-characters"
-          characters={favCharacters}
-          onAddFavCharacter={addFavCharacter}
-          onRemoveFavCharacter={removeFavCharacter}
-        />
-      )}
+      <CharactersGrid
+        testId="fav-characters"
+        characters={favCharacters}
+        onAddFavCharacter={addFavCharacter}
+        onRemoveFavCharacter={removeFavCharacter}
+      />
     </section>
   );
 };

@@ -56,16 +56,12 @@ const MarketplacePage = () => {
         </StyledFilterOption>
       </StyledFiltersWrapper>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <CharactersGrid
-          testId="characters"
-          characters={characters}
-          onAddFavCharacter={addFavCharacter}
-          onRemoveFavCharacter={removeFavCharacter}
-        />
-      )}
+      <CharactersGrid
+        testId="characters"
+        characters={characters}
+        onAddFavCharacter={addFavCharacter}
+        onRemoveFavCharacter={removeFavCharacter}
+      />
 
       {getFetchingStatus && (
         <ButtonWrapper>

@@ -14,6 +14,7 @@ Rick and Morty marketplace. You can take a look at all the characters from the R
 
 ## App features
 * ***Infinite loading***: You can see all the characters from the Rick and Morty series without getting all at once.
+* ***Filtering by status***: You can filter your search based on the status of the character (Alive, Dead or Unknown).
 * ***Fav characters saved on global state***: The characters you saved as favorite will be saved on the global state of the app using recoil. If you refresh the page, the state is deleted. You start with three characters saved as favorite. Other option was saving them on local storage, but it would turn useless using global state.
 
 ## Deployment
