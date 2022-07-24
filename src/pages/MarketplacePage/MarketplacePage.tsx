@@ -4,12 +4,12 @@ import { Character, useInfiniteCharacters } from '../../api/characters';
 import { Button } from '../../componets/Button/Button';
 import { CharactersGrid } from '../../componets/CharactersGrid/CharactersGrid';
 import { useFavUsersState } from '../../store';
-import { ButtonWrapper, StyledFilterOption, StyledFiltersWrapper, StyledTitle } from './styles';
+import { Badge, ButtonWrapper, StyledFilterOption, StyledFiltersWrapper, StyledTitle } from './styles';
 
 const MarketplacePage = () => {
   const { ref: inViewRef, inView } = useInView();
   const [characterStatusFilter, setCharacterStatusFilter] = useState<Character['status']>('alive');
-  const { data, hasNextPage, fetchNextPage, isFetching, isLoading } = useInfiniteCharacters(characterStatusFilter);
+  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteCharacters(characterStatusFilter);
   const [favCharactersIds, addFavCharacter, removeFavCharacter] = useFavUsersState();
 
   /**
@@ -18,8 +18,6 @@ const MarketplacePage = () => {
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, fetchNextPage, hasNextPage]);
-
-  const totalCharactersCount = useMemo(() => (data ? data.pages[0].pageInfo.count : null), [data]);
 
   const characters = useMemo(() => {
     const allCharacters = data
@@ -37,11 +35,11 @@ const MarketplacePage = () => {
   return (
     <section className="max-width-wrapper-inner">
       <StyledTitle>
+        <Badge>
+          by <strong>fonstack</strong>
+        </Badge>
         <h1 data-testid="page-title">Explore</h1>
-        <p>
-          {totalCharactersCount && <strong data-testid="characters-count">{totalCharactersCount}</strong>}{' '}
-          <span className="mute">characters found</span>
-        </p>
+        <p>All the Rick and Morty series characters!</p>
       </StyledTitle>
 
       <StyledFiltersWrapper>

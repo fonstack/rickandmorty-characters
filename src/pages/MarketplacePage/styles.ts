@@ -3,19 +3,24 @@ import { getFontSize, getSpacing } from '../../styles';
 
 export const StyledTitle = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 
   h1 {
     font-size: ${getFontSize('h1')};
+    /* margin-top: ${getSpacing(1)}; */
   }
 
   p {
-    margin-left: ${getSpacing(4)};
-
-    span.mute {
-      color: var(--color-light-gray);
-    }
+    font-size: ${getFontSize('h2')};
+    color: var(--color-light-gray);
   }
+`;
+
+export const Badge = styled.div`
+  padding: ${getSpacing(1)} ${getSpacing(3)};
+  background-color: var(--color-gray);
+  border-radius: 50px;
 `;
 
 export const StyledFiltersWrapper = styled.div`

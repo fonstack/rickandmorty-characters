@@ -3,17 +3,22 @@ import { getFontSize, getSpacing } from '../../styles';
 
 export const StyledTitle = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
 
   h1 {
     font-size: ${getFontSize('h1')};
   }
 
-  p {
-    margin-left: ${getSpacing(4)};
+  span {
+    font-size: ${getFontSize('h2')};
+  }
 
-    span.mute {
-      color: var(--color-light-gray);
-    }
+  span.quantity {
+    font-weight: 700;
+  }
+
+  span.mute {
+    color: var(--color-light-gray);
+    margin-left: ${getSpacing(1)};
   }
 `;

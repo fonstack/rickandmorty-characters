@@ -7,6 +7,9 @@ export interface AppProps {
   recoilInit?: (mutableSnapshot: MutableSnapshot) => void;
 }
 
+/**
+ * Switch betwwen BrowserRouter and MemoryRouter (for testing)
+ */
 const CustomRouter = ({ children, initialPath }: AppProps & { children: JSX.Element }) => {
   if (initialPath) {
     return <MemoryRouter initialEntries={[initialPath]}>{children}</MemoryRouter>;

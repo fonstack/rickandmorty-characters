@@ -6,7 +6,7 @@ import { StyledTitle } from './styles';
 
 const FavoritesPage = () => {
   const [favCharactersIds, addFavCharacter, removeFavCharacter] = useFavUsersState();
-  const { data, isLoading } = useCharactersByIds(favCharactersIds);
+  const { data } = useCharactersByIds(favCharactersIds);
 
   const favCharacters = useMemo(() => (data ? data.map((character) => ({ ...character, isFavorite: true })) : []), [data]);
 
@@ -14,10 +14,12 @@ const FavoritesPage = () => {
     <section className="max-width-wrapper-inner">
       <StyledTitle>
         <h1 data-testid="page-title">Favorites</h1>
-        <p>
-          <strong data-testid="characters-count">{favCharactersIds.length}</strong>{' '}
+        <div>
+          <span className="quantity" data-testid="characters-count">
+            {favCharactersIds.length}
+          </span>
           <span className="mute">favorite characters</span>
-        </p>
+        </div>
       </StyledTitle>
 
       <CharactersGrid

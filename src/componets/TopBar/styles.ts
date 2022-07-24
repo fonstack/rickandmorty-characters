@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { getFontSize, getSpacing } from '../../styles';
 
 export const StyledHeader = styled.header`
@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-light-gray);
 `;
 
 export const StyledNav = styled.nav`

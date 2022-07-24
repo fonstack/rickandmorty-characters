@@ -16,10 +16,8 @@ describe('Marketplace page tests', () => {
 
     renderApp(Paths.MARKETPLACE);
 
-    const totalCharactersCount = charactersResponse.pageInfo.count.toString();
     const renderedCharactersCount = charactersResponse.characters.length;
 
-    expect((await screen.findByTestId('characters-count')).textContent).toBe(totalCharactersCount);
     expect((await screen.findByTestId('characters')).childNodes.length).toBe(renderedCharactersCount);
   });
 });
