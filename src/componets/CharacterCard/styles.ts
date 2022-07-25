@@ -10,11 +10,21 @@ export const StyledCharacterCard = styled.div`
 export const ImageContainer = styled.div`
   position: relative;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  .image {
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    img.original {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 `;
 
@@ -68,7 +78,7 @@ export const IconTag = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  padding: ${getSpacing(5)} ${getSpacing(3)} ${getSpacing(2.5)} ${getSpacing(3)};
+  padding: ${getSpacing(5)} ${getSpacing(2)} ${getSpacing(2.5)} ${getSpacing(2)};
 
   .info-row {
     display: flex;
@@ -85,7 +95,6 @@ export const StyledInfo = styled.div`
   }
 
   p.content {
-    font-size: ${getFontSize('large')};
     line-height: 1.2;
 
     &.status-alive,

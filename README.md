@@ -3,7 +3,7 @@
 ![Rick and Morty](./app_preview.png)
 ![Rick and Morty](./app_preview_2.png)
 
-Rick and Morty marketplace. You can take a look at all the characters from the Rick and Morty series on a infinite loading list. You can save them as favorite and then you can take a look at your favorite characters. The app was developed using React, with Typescript of course ＼(°o°)／
+Rick and Morty marketplace. You can take a look at all the characters from the Rick and Morty series on a infinite loading and virtualized list, with a 'gallery' styles like in Pinterest (Masonry). You can save them as favorite and then you can take a look at your favorite characters. The app was developed using React, with Typescript of course ＼(°o°)／
 
 ## Libraries stack
 * ***Jest*** and ***React Testing library*** for testing hooks, components and pages.
@@ -16,6 +16,7 @@ Rick and Morty marketplace. You can take a look at all the characters from the R
 
 ## App features
 * ***Infinite loading***: You can see all the characters from the Rick and Morty series without getting all at once.
+* ***Masonry View***: All the characters are displayed on a Masonry view, like the one in Pinterest.
 * ***Virtualized list***: Having lot of characters in the dom is a big performance issue. This app implements list virtualization for only rendering at once a section of the characters.
 * ***Filtering by status***: You can filter your search based on the status of the character (Alive, Dead or Unknown).
 * ***Fav characters saved on global state***: The characters you saved as favorite will be saved on the global state of the app using recoil. If you refresh the page, the state is deleted. You start with three characters saved as favorite. Other option was saving them on local storage, but it would turn useless using global state.

@@ -28,7 +28,7 @@ const CharactersGrid = ({
         items={characters}
         columnGutter={24}
         columnWidth={205}
-        overscanBy={4}
+        overscanBy={6}
         render={VirtualizedCard}
         onRender={onNeedFetchMoreCharacters ? checkIfLoadMore : undefined}
       />

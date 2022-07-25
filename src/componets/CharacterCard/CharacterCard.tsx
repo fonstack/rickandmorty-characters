@@ -7,6 +7,7 @@ import { ReactComponent as MaleIcon } from '../../assets/icons/male.svg';
 import { ReactComponent as FemaleIcon } from '../../assets/icons/female.svg';
 import { ReactComponent as GenderlessIcon } from '../../assets/icons/genderless.svg';
 import { ReactComponent as UnknownIcon } from '../../assets/icons/unknown.svg';
+import placeholderImage from '../../assets/images/placeholder.jpeg';
 
 const getGenderHelper = (gender: Character['gender']) => {
   switch (gender) {
@@ -40,7 +41,10 @@ const CharacterCard = ({ character, onFavSelected }: CharacterCardProps) => {
   return (
     <StyledCharacterCard onDoubleClick={() => onFavSelected(id)}>
       <ImageContainer>
-        <img src={image} alt={name} />
+        <div className="image">
+          <img src={placeholderImage} alt={name} />
+          <img className="original" src={image} alt={name} />
+        </div>
         <FavoriteFlag role="button" onClick={() => onFavSelected(id)}>
           <HeartIcon className={isFavorite ? 'active' : ''} />
         </FavoriteFlag>
