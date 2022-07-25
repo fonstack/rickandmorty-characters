@@ -13,7 +13,6 @@ const CharactersGrid = ({
 }: CharactersGridProps) => {
   const checkIfLoadMore = useInfiniteLoader<Character, any>(onNeedFetchMoreCharacters, {
     isItemLoaded: (idx, characters) => !!characters[idx],
-    threshold: 16,
   });
 
   const VirtualizedCard = ({ data: character }: RenderComponentProps<Character>) => {
@@ -28,7 +27,7 @@ const CharactersGrid = ({
         itemKey={(character) => character.id}
         items={characters}
         columnGutter={24}
-        columnWidth={240}
+        columnWidth={205}
         render={VirtualizedCard}
         onRender={onNeedFetchMoreCharacters ? checkIfLoadMore : undefined}
       />

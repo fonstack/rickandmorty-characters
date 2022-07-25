@@ -16,7 +16,7 @@ export const StyledTitle = styled.div`
 
     &__quantity-container {
       font-size: ${getFontSize('large')};
-      margin-left: ${getSpacing(5)};
+      margin-left: ${getSpacing(4)};
 
       .quantity {
         font-weight: 700;
