@@ -3,7 +3,7 @@
 ![Rick and Morty](./app_preview.png)
 ![Rick and Morty](./app_preview_2.png)
 
-Rick and Morty marketplace. You can take a look at all the characters from the Rick and Morty series on a infinite loading and virtualized list, with a 'gallery' styles like in Pinterest (Masonry). You can save them as favorite and then you can take a look at your favorite characters. The app was developed using React, with Typescript of course ＼(°o°)／
+***Rick and Morty marketplace***. You can take a look at all the characters from the Rick and Morty series on a infinite loading and virtualized list, with a 'gallery' styles like in Pinterest (Masonry). You can save them as favorite and then you can take a look at your favorite characters. The app was developed using React, with Typescript of course ＼(°o°)／
 
 ## Libraries stack
 * ***Jest*** and ***React Testing library*** for testing hooks, components and pages.
