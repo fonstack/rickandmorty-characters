@@ -10,6 +10,11 @@ export const StyledTitle = styled.div`
     display: flex;
     align-items: center;
 
+    @media (max-width: 520px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     h1 {
       font-size: ${getFontSize('h1')};
     }
@@ -17,6 +22,10 @@ export const StyledTitle = styled.div`
     &__quantity-container {
       font-size: ${getFontSize('large')};
       margin-left: ${getSpacing(4)};
+
+      @media (max-width: 520px) {
+        margin-left: 0;
+      }
 
       .quantity {
         font-weight: 700;
