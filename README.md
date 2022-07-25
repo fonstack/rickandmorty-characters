@@ -11,9 +11,11 @@ Rick and Morty marketplace. You can take a look at all the characters from the R
 * ***Graphql Request*** for making the requests to the [Rick and Morty API.](https://rickandmortyapi.com/)
 * ***Recoil*** for global state management.
 * ***Styled Components*** for styling all the components and pages.
+* ***Masonic*** for virtualized list.
 
 ## App features
 * ***Infinite loading***: You can see all the characters from the Rick and Morty series without getting all at once.
+* ***Virtualized list***: Having lot of characters in the dom is a big performance issue. This app implements List Virtualization to only rendering at once a section of the characters.
 * ***Filtering by status***: You can filter your search based on the status of the character (Alive, Dead or Unknown).
 * ***Fav characters saved on global state***: The characters you saved as favorite will be saved on the global state of the app using recoil. If you refresh the page, the state is deleted. You start with three characters saved as favorite. Other option was saving them on local storage, but it would turn useless using global state.
 
