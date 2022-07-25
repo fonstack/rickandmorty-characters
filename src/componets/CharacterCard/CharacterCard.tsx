@@ -40,7 +40,7 @@ const CharacterCard = ({ character, onFavSelected }: CharacterCardProps) => {
   return (
     <StyledCharacterCard>
       <ImageContainer>
-        <img src={image} alt="" />
+        <img src={image} alt={name} />
         <FavoriteFlag role="button" onClick={() => onFavSelected(id)}>
           <HeartIcon className={isFavorite ? 'active' : ''} />
         </FavoriteFlag>

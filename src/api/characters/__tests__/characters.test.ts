@@ -27,7 +27,7 @@ describe('Characters api tests', () => {
   });
 
   it('Should get characters correctly', async () => {
-    const { result, waitFor, rerender } = renderHook(() => useInfiniteCharacters(), { wrapper });
+    const { result, waitFor, rerender } = renderHook(() => useInfiniteCharacters(''), { wrapper });
 
     await waitFor(() => !result.current.isFetching);
     rerender();
