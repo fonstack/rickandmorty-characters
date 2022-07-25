@@ -38,7 +38,7 @@ const CharacterCard = ({ character, onFavSelected }: CharacterCardProps) => {
   const { id, name, image, gender, species, status, isFavorite } = character;
 
   return (
-    <StyledCharacterCard>
+    <StyledCharacterCard onDoubleClick={() => onFavSelected(id)}>
       <ImageContainer>
         <img src={image} alt={name} />
         <FavoriteFlag role="button" onClick={() => onFavSelected(id)}>
