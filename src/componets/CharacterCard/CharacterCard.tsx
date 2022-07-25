@@ -7,7 +7,7 @@ import { ReactComponent as MaleIcon } from '../../assets/icons/male.svg';
 import { ReactComponent as FemaleIcon } from '../../assets/icons/female.svg';
 import { ReactComponent as GenderlessIcon } from '../../assets/icons/genderless.svg';
 import { ReactComponent as UnknownIcon } from '../../assets/icons/unknown.svg';
-import placeholderImage from '../../assets/images/placeholder.jpeg';
+import placeholderImage from '../../assets/images/placeholder.jpg';
 
 const getGenderHelper = (gender: Character['gender']) => {
   switch (gender) {
