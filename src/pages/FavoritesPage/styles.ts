@@ -22,3 +22,9 @@ export const StyledTitle = styled.div`
     margin-left: ${getSpacing(1)};
   }
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: ${getSpacing(6)} 0;
+`;

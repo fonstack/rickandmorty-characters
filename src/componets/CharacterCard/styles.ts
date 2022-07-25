@@ -44,21 +44,8 @@ export const FavoriteFlag = styled.div`
     transition: 0.2s;
 
     &.active {
-      animation: like 0.4s 1;
       fill: var(--color-secondary-lighter);
       stroke: var(--color-secondary-lighter);
-    }
-  }
-
-  @keyframes like {
-    0% {
-      transform: scale(1);
-    }
-    60% {
-      transform: scale(1.3);
-    }
-    100% {
-      transform: scale(1.1);
     }
   }
 `;

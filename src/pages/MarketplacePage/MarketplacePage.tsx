@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useMemo, useState } from 'react';
 import { Character, useInfiniteCharacters } from '../../api/characters';
 import { Button } from '../../componets/Button/Button';
 import { CharactersGrid } from '../../componets/CharactersGrid/CharactersGrid';
@@ -7,17 +6,15 @@ import { useFavUsersState } from '../../store';
 import { Badge, ButtonWrapper, StyledFilterOption, StyledFiltersWrapper, StyledTitle } from './styles';
 
 const MarketplacePage = () => {
-  const { ref: inViewRef, inView } = useInView();
   const [characterStatusFilter, setCharacterStatusFilter] = useState<Character['status']>('alive');
   const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteCharacters(characterStatusFilter);
   const [favCharactersIds, addFavCharacter, removeFavCharacter] = useFavUsersState();
 
-  /**
-   * Fetch next page when user scrolls to the bottom of the page
-   */
-  useEffect(() => {
-    if (inView && hasNextPage) fetchNextPage();
-  }, [inView, fetchNextPage, hasNextPage]);
+  const getMoreCharacters = () => {
+    if (hasNextPage) fetchNextPage();
+  };
+
+  const totalCharactersCount = useMemo(() => (data ? data.pages[0].pageInfo.count : null), [data]);
 
   const characters = useMemo(() => {
     const allCharacters = data
@@ -26,7 +23,7 @@ const MarketplacePage = () => {
     return allCharacters.map((character) => ({ ...character, isFavorite: favCharactersIds.includes(character.id) }));
   }, [data, favCharactersIds]);
 
-  const getFetchingStatus = useMemo((): string | null => {
+  const getDataStatus = useMemo((): string | null => {
     if (isFetching) return 'Loading more characters...';
     if (hasNextPage) return 'Load More';
     return '⊙﹏⊙ all characters loaded ⊙﹏⊙';
@@ -38,7 +35,15 @@ const MarketplacePage = () => {
         <Badge>
           by <strong>fonstack</strong>
         </Badge>
-        <h1 data-testid="page-title">Explore</h1>
+        <div className="main-title">
+          <h1 data-testid="page-title">Explore</h1>
+          <div className="main-title__quantity-container">
+            <span className="quantity" data-testid="characters-count">
+              {totalCharactersCount ?? '--'}
+            </span>
+            <span className="mute">characters found</span>
+          </div>
+        </div>
         <p>All the Rick and Morty series characters!</p>
       </StyledTitle>
 
@@ -55,15 +60,17 @@ const MarketplacePage = () => {
       </StyledFiltersWrapper>
 
       <CharactersGrid
+        key={`characters-grid-${characterStatusFilter}`}
         testId="characters"
         characters={characters}
         onAddFavCharacter={addFavCharacter}
         onRemoveFavCharacter={removeFavCharacter}
+        onNeedFetchMoreCharacters={getMoreCharacters}
       />
 
-      {getFetchingStatus && (
+      {getDataStatus && (
         <ButtonWrapper>
-          <Button ref={inViewRef}>{getFetchingStatus}</Button>
+          <Button>{getDataStatus}</Button>
         </ButtonWrapper>
       )}
     </section>

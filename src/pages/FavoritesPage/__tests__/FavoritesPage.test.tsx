@@ -18,6 +18,6 @@ describe('Favorites page tests', () => {
 
     renderApp(Paths.FAVORITES, (snap) => snap.set(favCharactersState, favCharactersIds));
 
-    expect((await screen.findByTestId('fav-characters')).childNodes.length).toBe(favCharactersIds.length);
+    expect(await (await screen.findByTestId('characters-count')).textContent).toBe(`${favCharactersIds.length}`);
   });
 });

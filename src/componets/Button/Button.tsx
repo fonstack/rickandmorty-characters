@@ -2,12 +2,12 @@ import React from 'react';
 import { StyledButton } from './styles';
 import { ButtonProps } from './types';
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ children, onClick, testId }, ref) => {
+const Button = ({ children, onClick, testId }: ButtonProps) => {
   return (
-    <StyledButton ref={ref} data-testid={testId} onClick={onClick}>
+    <StyledButton data-testid={testId} onClick={onClick}>
       {children}
     </StyledButton>
   );
-});
+};
 
 export { Button };

@@ -6,9 +6,27 @@ export const StyledTitle = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  h1 {
-    font-size: ${getFontSize('h1')};
-    /* margin-top: ${getSpacing(1)}; */
+  .main-title {
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-size: ${getFontSize('h1')};
+    }
+
+    &__quantity-container {
+      font-size: ${getFontSize('large')};
+      margin-left: ${getSpacing(5)};
+
+      .quantity {
+        font-weight: 700;
+      }
+
+      .mute {
+        color: var(--color-light-gray);
+        margin-left: ${getSpacing(1)};
+      }
+    }
   }
 
   p {
